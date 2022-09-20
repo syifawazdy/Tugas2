@@ -1,0 +1,68 @@
+[
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":1,
+        "fields":{
+            "watched": true,
+            "title":"Pride and Prejudice",
+            "rating": 9,
+            "release_date": "16 September 2005",
+            "review": "Best period movie of all time!"
+        }
+},
+{
+        "model":"mywatchlist.MyWatchList",
+        "pk":2,
+        "fields":{
+            "watched": true,
+            "title":"Pursuit of Happiness",
+            "rating": 9,
+            "release_date": "15 Desember 2006",
+            "review": "Bawled my eyes out :("
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":3,
+        "fields":{
+            "watched": true,
+            "title":"The Shawsank Redemption",
+            "rating": 10,
+            "release_date": "22 September 1994",
+            "review": "GA KETEBAK BANGET"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":4,
+        "fields":{
+            "watched": true,
+            "title":"Forrest Gump",
+            "rating": 10,
+            "release_date": "6 Juli 1994",
+            "review": "Such an emotional rollercoaster"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":5,
+        "fields":{
+            "watched": true,
+            "title":"Inside Out",
+            "rating": 9,
+            "release_date": "10 Desember 2015",
+            "review": "BingBong death scene traumatized me"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":6,
+        "fields":{
+            "watched": true,
+            "title":"Inside Out",
+            "rating": 9,
+            "release_date": "10 Desember 2015",
+            "review": "BingBong death scene traumatized me"
+        }
+    }
+]

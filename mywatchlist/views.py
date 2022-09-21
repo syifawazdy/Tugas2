@@ -4,14 +4,14 @@ from django.http import HttpResponse
 from django.core import serializers
 
 def show_mywatchlist(request):
-    return render(request, "mywatchlist.html", context)
-
-mywatchlist = MyWatchList.objects.all()
-context = {
+    mywatchlist = MyWatchList.objects.all()
+    context = {
     'list_barang': mywatchlist,
     'nama': 'Syifa',
     'id': '2106701066',
-}
+    }
+    return render(request, "mywatchlist.html", context)
+
 
 # Create your views here.
 def show_xml(request):

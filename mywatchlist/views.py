@@ -5,13 +5,53 @@ from django.core import serializers
 
 def show_mywatchlist(request):
     mywatchlist = MyWatchList.objects.all()
+    watched_movie = 0
+    unwatched_movie = 0
+    message = ""
+
+    for movie in mywatchlist:
+        if (movie.watched):
+            watched_movie += 1
+        else:
+            unwatched_movie += 1
+
+    if (watched_movie >= unwatched_movie):
+        message = "Selamat, kamu sudah banyak menonton!"
+    else:
+        message = "Wah, kamu masih sedikit menonton!"
+    
     context = {
     'list_barang': mywatchlist,
     'nama': 'Syifa',
     'id': '2106701066',
+    'message': message
     }
     return render(request, "mywatchlist.html", context)
 
+def show_html(request):
+    mywatchlist = MyWatchList.objects.all()
+    watched_movie = 0
+    unwatched_movie = 0
+    message = ""
+
+    for movie in mywatchlist:
+        if (movie.watched):
+            watched_movie += 1
+        else:
+            unwatched_movie += 1
+
+    if (watched_movie >= unwatched_movie):
+        message = "Selamat, kamu sudah banyak menonton!"
+    else:
+        message = "Wah, kamu masih sedikit menonton!"
+    
+    context = {
+    'list_barang': mywatchlist,
+    'nama': 'Syifa',
+    'id': '2106701066',
+    'message': message
+    }
+    return render(request, "mywatchlist.html", context)
 
 # Create your views here.
 def show_xml(request):

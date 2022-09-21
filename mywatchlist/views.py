@@ -5,17 +5,17 @@ from django.core import serializers
 
 def show_mywatchlist(request):
     mywatchlist = MyWatchList.objects.all()
-    watched_movie = 0
-    unwatched_movie = 0
+    watched = 0
+    unwatched = 0
     message = ""
 
     for movie in mywatchlist:
         if (movie.watched):
-            watched_movie += 1
+            watched += 1
         else:
-            unwatched_movie += 1
+            unwatched += 1
 
-    if (watched_movie >= unwatched_movie):
+    if (watched >= unwatched):
         message = "Selamat, kamu sudah banyak menonton!"
     else:
         message = "Wah, kamu masih sedikit menonton!"
@@ -30,17 +30,17 @@ def show_mywatchlist(request):
 
 def show_html(request):
     mywatchlist = MyWatchList.objects.all()
-    watched_movie = 0
-    unwatched_movie = 0
+    watched = 0
+    unwatched = 0
     message = ""
 
     for movie in mywatchlist:
         if (movie.watched):
-            watched_movie += 1
+            watched += 1
         else:
-            unwatched_movie += 1
+            unwatched += 1
 
-    if (watched_movie >= unwatched_movie):
+    if (watched >= unwatched):
         message = "Selamat, kamu sudah banyak menonton!"
     else:
         message = "Wah, kamu masih sedikit menonton!"

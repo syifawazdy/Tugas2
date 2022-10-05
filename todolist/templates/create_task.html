@@ -5,18 +5,43 @@
 {% endblock meta %}
 
 {% block content %}
+<style> 
+  input[type=submit] {
+    background-color:aquamarine;
+    border: none;
+    color: rgb(13, 6, 6);
+    padding: 16px 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  input, textarea {
+   padding: 0.5rem;
+   border: 1px solid;
+   border-radius: 8px;
+   width: 100%
+  }
+  ul {
+    padding-left: 0.5rem;
+    list-style-type: disc;
+  }
+  body {
+    text-align: center;
+}
+  form {
+    display: inline-block;
+}
+  </style>
 
-<div class="login">
-
-  <h2>Make your TO-DO!</h2>
-
-  <form method="POST">
+<div class="mx-auto container flex flex-col gap-4 pt-8">
+  <h1 class="text-4xl font-bold text-center">Make your TODO!</h1>
+  <div class="rounded-lg p-4 flex flex-col gap-4 mx-auto bg-base-100">
+  <form method="POST" class="m-auto">
     {% csrf_token %}
     <table>
       {{ form.as_table }}
       <tr>
         <td></td>
-        <td><input type="submit" name="submit" value="Create" /></td>
+        <td ><input type="submit" name="submit" value="Create" /></td>
       </tr>
     </table>
   </form>

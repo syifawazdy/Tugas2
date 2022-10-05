@@ -2,30 +2,92 @@
 
 {% block meta %}
 <title>TODO</title>
+<style>
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;    
+    border-radius: 5px;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);    
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+
+  .content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+  .navbar-custom {
+    background-color:#F6F6F2;
+}
+  body {
+    background: linear-gradient(-45deg, #388087, #6FB3B8, #BADFE7, #C2EDCE);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+</style>
 {% endblock meta %}
 
 {% block content %}
-<h1>Hello, {{ user.get_username }}!<h1>
-<h3>To-Do List:</h3>
+<div class="navbar navbar-custom mb-4">
+  <div class="container-fluid justify-content-center">
+      <h1 class="navbar-brand" href="#">Hello, {{ user.get_username }}! Here's your to-do list!</h1>
+    </div>
+  </div>
 
-<table>
-    <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Description</th>
-    </tr>
+<div class="content w-100 mx-auto">
+  <div class="header text-center mx-auto">
+      <a href="{% url 'todolist:logout' %}" class="btn btn-danger" style="float:left">Log Out</a> 
+      <a href="{% url 'todolist:create_todo' %}" class="btn btn-primary" style="float:right">Create New Task</a>
+  </div>
+</div>
 
-    {% for data in list_todo %}
-    <tr>
-        <th>{{data.date}}</th>
-        <th>{{data.title}}</th>
-        <th>{{data.description}}</th>
-    </tr>
-{% endfor %}
-</table>
+<div class="container-fluid">
+	<div class="row row-cols-1 row-cols-md-3 g-4 md:justify-end gap-4">
+		{% for data in list_todo %}
+			<div class="card col-sm-4 mb-1 mt-4 mx-auto" style="width: 18rem;">
+				<div class="card-body">
+          <h4 class="card-title text-center fw-semibold">{{ data.title }}</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-secondary">{{ data.date }}</li>
+            <li class="list-group-item">{{ data.description }}</li>
+          </ul>
+				</div>
+        <div class="card-footer text-center">
+          {% if data.is_finished %}
+          <p class="text-success">Finished </p>
+          {% else %}
+          <p class="text-danger">Not Finished</p>
+          {% endif %}
+          <button type="button" class="btn btn-danger btn-sm" style="float:left"><a class="text-light" href="{% url 'todolist:delete' data.id %}" style="text-decoration:solid ">Delete</a></button>
+          <button type="button" class="btn btn-dark btn-sm" style="float:right"><a class="text-light" href="{% url 'todolist:status' data.id %}" style="text-decoration:solid ">Update</a></button>
+        </div>
+			</div>
+		{% endfor %}
+	</div>
+</div> 
+</div>
 <br>
-<button><a href="{% url 'todolist:logout' %}">Log Out</a></button>
-<button><a href="{% url 'todolist:create_todo' %}">Create New Task</button>
-
 
 {% endblock content %}

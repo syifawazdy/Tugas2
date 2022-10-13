@@ -14,7 +14,6 @@ from django.http import HttpResponse
 from django.core import serializers
 
 # Create your views here.
-
 @login_required(login_url='/todolist/login/')
 def register(request):
     form = UserCreationForm()

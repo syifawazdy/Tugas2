@@ -118,7 +118,7 @@
   <div class="content w-100 mx-auto">
     <div class="header text-center mx-auto">
         <a href="{% url 'todolist:logout' %}" class="btn btn-danger" style="float:left">Log Out</a> 
-        <a data-bs-toggle="modal" href="#addTask" class="btn btn-primary" style="float:right">Create New Task</a>
+        <a data-bs-toggle="modal" href="#addTask" class="btn btn-primary" style="float:right">Add Task</a>
     </div>
   </div>
   
@@ -137,9 +137,7 @@
               <tr>
                 <label>Title</label>
                 <input type="text" name="title" id="title">
-              </tr>
-              <br>
-              <br>
+              </tr><br>
               <tr>
                 <label>Description</label>
                 <input type="textarea" name="description" id="description">
@@ -157,6 +155,7 @@
     </div>
   </div>
 </div>
+
 
 
  {% endblock content %}

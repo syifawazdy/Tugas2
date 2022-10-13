@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -9,16 +10,12 @@ from todolist.models import Task
 from todolist.form import NewForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponse
+from django.core import serializers
 
 # Create your views here.
-@login_required(login_url='/todolist/login/')
-def show_todolist(request):
-    data_todolist = Task.objects.filter(user=request.user).all()
-    context = {
-        'list_todo': data_todolist,
-}
-    return render(request, "todolist.html", context)
 
+@login_required(login_url='/todolist/login/')
 def register(request):
     form = UserCreationForm()
 
@@ -39,7 +36,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('todolist:show_todolist')           
+            return redirect('todolist:show_todolist_ajax')           
         else:
             messages.info(request, 'Wrong Username or Password!')
     context = {}
@@ -72,10 +69,36 @@ def status(request, id):
     else:
         status.is_finished = True
     status.save()
-    return HttpResponseRedirect(reverse('todolist:show_todolist'))
+    return HttpResponseRedirect(reverse('todolist:show_todolist_ajax'))
 
 def delete(request, id):
     delete = Task.objects.get(pk=id)
     delete.delete()
-    return HttpResponseRedirect(reverse('todolist:show_todolist'))
+    return HttpResponseRedirect(reverse('todolist:show_todolist_ajax'))
+
+def show_todolist_ajax(request):
+    data = Task.objects.filter(user=request.user).all()
+    context = {
+        'todo_list': data,
+    } 
+    return render(request, "todolist_ajax.html", context)
+
+def show_json(request):
+    data = Task.objects.filter(user=request.user).all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def add_task(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        new_task = Task(
+            date=str(datetime.date.today()),
+            title=title, 
+            description=description,
+            user=request.user,
+        )
+        new_task.save()
+    redirect('todolist:show_todolist_ajax')
+    return HttpResponse('')
+    
 

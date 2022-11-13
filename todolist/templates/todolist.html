@@ -80,7 +80,7 @@
           {% else %}
           <p class="text-danger">Not Finished</p>
           {% endif %}
-          <button type="button" class="btn btn-danger btn-sm" style="float:left"><a class="text-light" href="{% url 'todolist:delete' data.id %}" style="text-decoration:solid ">Delete</a></button>
+          <button type="button" class="btn btn-dark btn-sm" style="float:left"><a class="text-light" href="{% url 'todolist:delete' data.id %}" style="text-decoration:solid ">Delete</a></button>
           <button type="button" class="btn btn-dark btn-sm" style="float:right"><a class="text-light" href="{% url 'todolist:status' data.id %}" style="text-decoration:solid ">Update</a></button>
         </div>
 			</div>

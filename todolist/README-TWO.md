@@ -5,7 +5,6 @@
  ***Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma Event-Driven Programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.***
  Event-Driven Programming adalah sebuah paradigma pemrograman yang alur programnya ditentukan oleh suatu event / peristiwa yang merupakan keluaran atau tindakan pengguna. Pada tugas ini contohnya yaitu pada saat button Add Task diklik oleh user, maka akan menyebabkan sebuah event terjadi, yaitu akan muncul modal pada laman website untuk membuat task baru di todolist kita.
 
-
  ***Jelaskan penerapan asynchronous programming pada AJAX.***
  AJAX adalah sebuah teknik yang dapat membuat laman website ter-update secara asinkronus yang berarti browser tidak perlu reload seluruh laman website ketika ada perubahan data yang kecil. AJAX akan mengirimkan request ke server, dan melanjutkan eksekusi tanpa menunggu balasan dari server terlebih dahulu.
 

@@ -14,7 +14,6 @@ from django.http import HttpResponse
 from django.core import serializers
 
 # Create your views here.
-@login_required(login_url='/todolist/login/')
 def register(request):
     form = UserCreationForm()
 
@@ -75,6 +74,7 @@ def delete(request, id):
     delete.delete()
     return HttpResponseRedirect(reverse('todolist:show_todolist_ajax'))
 
+@login_required(login_url='/todolist/login/')
 def show_todolist_ajax(request):
     data = Task.objects.filter(user=request.user).all()
     context = {
